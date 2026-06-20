@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: elearning_db
+    environment:
+      POSTGRES_DB: elearning
+      POSTGRES_USER: apokrzywa
+      POSTGRES_PASSWORD: projekt2026
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./elearning.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    restart: unless-stopped
+
+volumes:
+  pgdata:
