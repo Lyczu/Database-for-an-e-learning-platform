@@ -512,7 +512,10 @@ INSERT INTO public.grades (id, test_id, user_id, points_scored, graded_at) VALUE
 -- Tomasz (user 8) – Python + ML
 (18, 4, 8,  9.00, '2026-04-01 14:00:00'),  -- Quiz dekoratory: 9/20
 (19, 7, 8, 11.00, '2026-04-08 15:00:00'),  -- Quiz ML: 11/15
-(20, 9, 8, 35.00, '2026-04-25 16:00:00');  -- Egzamin sieci: 35/50
+(20, 9, 8, 35.00, '2026-04-25 16:00:00'),  -- Egzamin sieci: 35/50
+(21, 5, 6, 22.00, '2026-04-30 10:00:00'),  -- Test asyncio: 22/25
+(22, 9, 7, 41.00, '2026-05-02 11:00:00'),  -- Egzamin ML: 41/50
+(23, 6, 8, 19.50, '2026-05-04 12:00:00');  -- Test asyncio: 19.5/25
 
 
 SET session_replication_role = DEFAULT;  -- włącza triggery z powrotem
@@ -528,7 +531,7 @@ SELECT pg_catalog.setval('public.courses_id_seq',             3, true);
 SELECT pg_catalog.setval('public.course_enrollments_id_seq', 10, true);
 SELECT pg_catalog.setval('public.lessons_id_seq',            12, true);
 SELECT pg_catalog.setval('public.tests_id_seq',               9, true);
-SELECT pg_catalog.setval('public.grades_id_seq',             20, true);
+SELECT pg_catalog.setval('public.grades_id_seq',             23, true);
 
 
 -- ============================================================
