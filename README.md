@@ -30,3 +30,52 @@ System opiera się na siedmiu głównych tabelach:
 * **Widoki analityczne:** Zaimplementowano gotowe widoki ułatwiające raportowanie, w tym dynamiczny ranking studentów (`v_ranking_studentow`), ogólne statystyki kursów (`v_statystyki_kursu`) oraz szczegółowe postępy studentów (`v_postepy_studenta`).
 * **Transakcje i izolacja:** Operacje krytyczne dla integralności danych (np. rejestracja użytkownika, zapis na kurs, wystawienie oceny) ustrukturyzowano w bloki transakcyjne z jawnym przypisaniem dedykowanych poziomów izolacji, takich jak `REPEATABLE READ` oraz `SERIALIZABLE`.
 * **Bezpieczeństwo i RBAC:** Wdrożono kompletny model bezpieczeństwa ról, odzwierciedlający zasadę najmniejszych uprawnień. Utworzono restrykcyjne role produkcyjne, na przykład konto nauczycielskie (tylko z prawem wprowadzania ocen) oraz konto wyłącznie do odczytu dla celów audytu.
+
+---
+
+## 🛠 Wymagania wstępne
+Aby uruchomić projekt na swoim środowisku lokalnym, będziesz potrzebować:
+* **PostgreSQL** w wersji 16 lub nowszej.
+* Dowolnego klienta bazy danych (np. pgAdmin, DBeaver, DataGrip) lub dostępu do psql z poziomu wiersza poleceń.
+
+## 🚀 Uruchomienie projektu
+1. Sklonuj repozytorium na swój dysk lokalny:
+   ```bash
+   git clone [https://github.com/TwojLogin/nazwa-repozytorium.git](https://github.com/TwojLogin/nazwa-repozytorium.git)
+   ```
+
+2. Utwórz nową, pustą bazę danych w PostgreSQL.
+3. Zaimportuj strukturę i dane w podanej kolejności, wykonując skrypty SQL znajdujące się w folderze `/sql`:
+* `01_schema.sql` - tworzenie tabel i relacji
+* `02_views.sql` - tworzenie widoków analitycznych
+* `03_functions_triggers.sql` - logika biznesowa, funkcje i wyzwalacze
+* `04_roles_security.sql` - tworzenie ról i nadawanie uprawnień
+* `05_seed_data.sql` - (Opcjonalnie) przykładowe dane testowe
+
+
+
+---
+
+## 🤝 Wkład w projekt (Contributing)
+
+Projekt ma charakter otwarty i zachęcam do jego współtworzenia! Jeśli masz pomysł na optymalizację zapytań, dodanie nowych widoków lub rozszerzenie logiki biznesowej, zastosuj się do poniższych kroków:
+
+### Jak zacząć?
+
+1. Zrób **Fork** tego repozytorium.
+2. Utwórz nową gałąź na swoją funkcjonalność: `git checkout -b feature/nowa-funkcjonalnosc` (lub `fix/naprawa-bledu`).
+3. Wprowadź swoje zmiany w kodzie SQL.
+4. Zatwierdź zmiany (Commit): `git commit -m 'Dodano nowy widok ze statystykami logowań'`.
+5. Wypchnij gałąź do swojego forka: `git push origin feature/nowa-funkcjonalnosc`.
+6. Utwórz **Pull Request (PR)** do oryginalnego repozytorium, dokładnie opisując, co zostało dodane lub zmienione.
+
+### Zasady pisania kodu SQL w tym projekcie:
+
+* **Nazewnictwo:** Używaj notacji `snake_case` dla nazw tabel, kolumn, widoków (np. `v_nazwa_widoku`) i funkcji.
+* **Normalizacja:** Pilnuj, aby nowe tabele zachowywały 3NF. Zawsze definiuj klucze główne (`PRIMARY KEY`) i obce (`FOREIGN KEY`).
+* **Komentarze:** Każdą nową funkcję w PL/pgSQL lub skomplikowany widok opatrz krótkim komentarzem wyjaśniającym jego działanie.
+* **Testowanie:** Upewnij się, że modyfikacje nie psują istniejących wyzwalaczy ani mechanizmów izolacji transakcji.
+
+## 📄 Licencja
+
+Rozpowszechniane na licencji MIT. Zobacz plik `LICENSE` po więcej informacji.
