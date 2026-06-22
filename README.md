@@ -75,7 +75,3 @@ Projekt ma charakter otwarty i zachęcam do jego współtworzenia! Jeśli masz p
 * **Normalizacja:** Pilnuj, aby nowe tabele zachowywały 3NF. Zawsze definiuj klucze główne (`PRIMARY KEY`) i obce (`FOREIGN KEY`).
 * **Komentarze:** Każdą nową funkcję w PL/pgSQL lub skomplikowany widok opatrz krótkim komentarzem wyjaśniającym jego działanie.
 * **Testowanie:** Upewnij się, że modyfikacje nie psują istniejących wyzwalaczy ani mechanizmów izolacji transakcji.
-
-## 📄 Licencja
-
-Rozpowszechniane na licencji MIT. Zobacz plik `LICENSE` po więcej informacji.
